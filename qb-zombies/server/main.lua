@@ -1,6 +1,6 @@
-local QBCore = exports['qb-core']:GetCoreObject()
-
 players = {}
+entitys = {}
+local QBCore = exports['qb-core']:GetCoreObject()
 
 RegisterServerEvent("qb-zombies:newplayer")
 AddEventHandler("qb-zombies:newplayer", function(id)
@@ -49,8 +49,6 @@ AddEventHandler('qb-zombies:itemloot', function(listKey)
         end
     end
 end)
-
-entitys = {}
 
 RegisterServerEvent("RegisterNewZombie")
 AddEventHandler("RegisterNewZombie", function(entity)
