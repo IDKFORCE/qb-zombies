@@ -42,7 +42,7 @@ AddEventHandler("ZombieSync", function()
 	SetRelationshipBetweenGroups(2, GetHashKey("PLAYER"), GetHashKey("zombie"))
 
 	while true do
-		Citizen.Wait(1)
+		Wait(1)
 		if #entitys < Config.SpawnZombie then
 
 			x, y, z = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
@@ -83,7 +83,7 @@ AddEventHandler("ZombieSync", function()
 						
 			RequestAnimSet(walk)
 			while not HasAnimSetLoaded(walk) do
-				Citizen.Wait(1)
+				Wait(1)
 			end
 			SetPedMaxHealth(entity, 140)
 			SetEntityHealth(entity, 140)
@@ -153,9 +153,9 @@ AddEventHandler("ZombieSync", function()
 end)
 
 --Zombie sounds
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(10000)
+        Wait(10000)
         for i, entity in pairs(entitys) do
 	       	playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 			pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, true))
@@ -172,9 +172,9 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(1000)
+		Wait(1000)
 		for i, entity in pairs(entitys) do
 			for j, player in pairs(players) do
 				local playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(player), true))
@@ -188,9 +188,9 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(1)
+        Wait(1)
         for i, entity in pairs(entitys) do
 	       	playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 			pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, true))
@@ -229,9 +229,9 @@ if Config.MuteAmbience then
 end
 
 -- Set Player Stats Function 
-Citizen.CreateThread( function()
+CreateThread( function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		RestorePlayerStamina(PlayerId(), 1.0)
 
 		SetPlayerMeleeWeaponDamageModifier(PlayerId(), 0.1)
@@ -244,9 +244,9 @@ end)
 
 -- Zombie Loot Drop Function
 if Config.ZombieDropLoot then
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while true do
-			Citizen.Wait(1)
+			Wait(1)
 			for i, entity in pairs(entitys) do
 				playerX, playerY, playerZ = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
 				pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, true))
@@ -264,10 +264,10 @@ if Config.ZombieDropLoot then
 									if DoesEntityExist(GetPlayerPed(-1)) then
 										RequestAnimDict("random@domestic")
 										while not HasAnimDictLoaded("random@domestic") do
-											Citizen.Wait(1)
+											Wait(1)
 										end
 										TaskPlayAnim(PlayerPedId(), "random@domestic", "pickup_low", 8.0, -8, 2000, 2, 0, 0, 0, 0)
-										Citizen.Wait(2000)
+										Wait(2000)
 										randomChance = math.random(1, 100)
 										if randomChance < Config.ProbabilityMoneyLoot then
 											TriggerServerEvent('qb-zombies:moneyloot')
@@ -296,9 +296,9 @@ end
 
 -- Set Safe Zone Areas Function
 if Config.SafeZone then
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while true do
-			Citizen.Wait(1)
+			Wait(1)
 			for k, v in pairs(Config.SafeZoneCoords) do
 				for i, entity in pairs(entitys) do
 					pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, true))
@@ -317,7 +317,7 @@ end
 
 -- Safe Zone Blip Function
 if Config.SafeZoneRadioBlip then
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		for k,v in pairs(Config.SafeZoneCoords) do
 			local blip = AddBlipForRadius(v.x, v.y, v.z , 40.0) -- you can use a higher number for a bigger zone
 
@@ -355,9 +355,9 @@ end)
 
 -- Debug Function
 if Config.Debug then
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while true do
-			Citizen.Wait(1)
+			Wait(1)
 			for i, entity in pairs(entitys) do
 				local playerX, playerY, playerZ = table.unpack(GetEntityCoords(PlayerPedId(), true))
 				local pedX, pedY, pedZ = table.unpack(GetEntityCoords(entity, false))	
@@ -369,9 +369,9 @@ end
 
 -- No PEDs Function
 if Config.NoPeds then
-	Citizen.CreateThread(function()
+	CreateThread(function()
 		while true do
-			Citizen.Wait(1)
+			Wait(1)
 	    	SetVehicleDensityMultiplierThisFrame(0.0)
 			SetPedDensityMultiplierThisFrame(0.0)
 			SetRandomVehicleDensityMultiplierThisFrame(0.0)
