@@ -1,5 +1,5 @@
 fx_version 'cerulean'
-games { 'gta5' }
+game 'gta5'
 
 author '⸸♱♥IDK_FORCE♥♱⸸#7611'
 description 'Zombie System for QB-Core Framework'
