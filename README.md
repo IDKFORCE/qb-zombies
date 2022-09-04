@@ -7,6 +7,9 @@ This is a zombie system, converted from ESX
 * Safe Zones
 * Loot Objects
 
+```My Discord```
+- [Discord](https://discord.gg/6kJ5ubDEWE)
+
 ## How install
 1. Download the github repository
 2. Drop the files in your [resource] folder
