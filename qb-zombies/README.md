@@ -1,5 +1,5 @@
 This is a zombie system, converted from ESX
-* Loot from zombies (Weapons, items and money)
+* Loot from zombies (Weapons, items & money ect)
 * Loot probability
 * Follow the closest player
 * Hordes
