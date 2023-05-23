@@ -8,7 +8,7 @@ This is a zombie system, converted from ESX
 * Loot Objects
 
 ```My Discord```
-- [Discord](https://discord.gg/6kJ5ubDEWE)
+- [Discord](https://discord.gg/UFng7DWnWP)
 
 
 ## How install
